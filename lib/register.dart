@@ -40,7 +40,7 @@ class _MyRegisterState extends State<MyRegister> {
                 ),
               ),
             ),
-             SingleChildScrollView(
+            SingleChildScrollView(
               child: Container(
                 padding: EdgeInsets.only(
                     top: MediaQuery.of(context).size.height * 0.36),
