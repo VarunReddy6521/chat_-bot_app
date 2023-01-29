@@ -14,6 +14,16 @@ void main() {
       'splash':(context) => Splash(),
       'chatbot':(context) => ChatbotScreen()
     },
+    theme: ThemeData(
+      fontFamily: 'Quicksand',
+      textTheme: ThemeData.light().textTheme.copyWith(
+        headline6: const TextStyle(
+                fontFamily: 'OpenSans',
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+      )
+    ),
   ));
 }
 
