@@ -7,48 +7,41 @@ class ChatMessage extends StatelessWidget {
   final String sender;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
     return Card(
-      elevation: 1,
-      child: sender == 'chatbot'?Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          Container(
-            margin: const EdgeInsets.only(right: 16),
-            child: CircleAvatar(child: Text(sender[0])),
+        elevation: 1,
+        child: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft,
+              colors: [
+                Color(0xFFFAFFD1),
+                Color(0xFFA1FFCE),
+              ],
+            ),
           ),
-          Expanded(
-              child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Text(sender, style: Theme.of(context).textTheme.headline6, ),
               Container(
-                margin: const EdgeInsets.only(top: 7 ,bottom: 7,),
-                child: txtContainer,
-              )
+                margin: const EdgeInsets.only(right: 16),
+                child: CircleAvatar(child: Text(sender[0])),
+              ),
+              Expanded(
+                  child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(sender, style: Theme.of(context).textTheme.headline6, ),
+                  Container(
+                    margin: const EdgeInsets.only(top: 7 ,bottom: 7,),
+                    child: txtContainer,
+                  )
+                ],
+              ))
             ],
-          ))
-        ],
-      ): Row(
-
-        children: [
-          Container(
-            margin: const EdgeInsets.only(right: 16),
-            child: CircleAvatar(child: Text(sender[0])),
           ),
-          Expanded(
-              child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(sender, style: Theme.of(context).textTheme.subtitle1, ),
-              Container(
-                margin: const EdgeInsets.only(top: 7 ,bottom: 7,),
-                child: txtContainer,
-              )
-            ],
-          ))
-        ],
-      )
+        )
     );
   }
 }

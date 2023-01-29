@@ -10,6 +10,8 @@ class MyLogin extends StatefulWidget {
 class _MyLoginState extends State<MyLogin> {
   @override
   Widget build(BuildContext context) {
+    TextEditingController _emailController = TextEditingController();
+    TextEditingController _passwordController = TextEditingController();
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
@@ -33,7 +35,8 @@ class _MyLoginState extends State<MyLogin> {
               },
               child: Container(
                 margin: const EdgeInsets.symmetric(horizontal: 20),
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 30),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 30),
                 child: const Text(
                   'Welcome Back',
                   style: TextStyle(color: Colors.white, fontSize: 33),
@@ -48,6 +51,7 @@ class _MyLoginState extends State<MyLogin> {
                     left: 35),
                 child: Column(children: [
                   TextField(
+                    controller: _emailController,
                     decoration: InputDecoration(
                         fillColor: Colors.white,
                         filled: true,
@@ -59,6 +63,7 @@ class _MyLoginState extends State<MyLogin> {
                     height: 30,
                   ),
                   TextField(
+                    controller: _passwordController,
                     obscureText: true,
                     decoration: InputDecoration(
                         fillColor: Colors.white,
@@ -72,7 +77,7 @@ class _MyLoginState extends State<MyLogin> {
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children:  [
+                    children: [
                       const Text(
                         'Sign In',
                         style: TextStyle(
@@ -81,13 +86,15 @@ class _MyLoginState extends State<MyLogin> {
                             fontWeight: FontWeight.w700),
                       ),
                       GestureDetector(
-                        onTap: ()=>Navigator.pushReplacementNamed(context, 'splash'),
+                        onTap: () =>
+                            Navigator.pushReplacementNamed(context, 'splash'),
                         child: const CircleAvatar(
                           radius: 30,
                           backgroundColor: Color(0xff4c505b),
                           child: IconButton(
                             onPressed: null,
-                            icon: Icon(Icons.arrow_forward, color: Colors.white),
+                            icon:
+                                Icon(Icons.arrow_forward, color: Colors.white),
                           ),
                         ),
                       )
@@ -98,9 +105,9 @@ class _MyLoginState extends State<MyLogin> {
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children:[
+                    children: [
                       TextButton(
-                        onPressed: (){
+                        onPressed: () {
                           Navigator.pushNamed(context, 'register');
                         },
                         child: const Text(

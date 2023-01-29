@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class MyRegister extends StatefulWidget {
   const MyRegister({super.key});
 
@@ -9,6 +10,9 @@ class MyRegister extends StatefulWidget {
 class _MyRegisterState extends State<MyRegister> {
   @override
   Widget build(BuildContext context) {
+    TextEditingController _nameController = TextEditingController();
+    TextEditingController _emailController = TextEditingController();
+    TextEditingController _passwordController = TextEditingController();
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
@@ -16,42 +20,40 @@ class _MyRegisterState extends State<MyRegister> {
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        body: Stack(
-          children: [
-            TweenAnimationBuilder(
-              duration: const Duration(milliseconds: 1050),
-              tween: Tween<double>(begin: 0, end: 1),
-              builder: (BuildContext context, tween, Widget? child) {
-                return Opacity(
-                  opacity: tween,
-                  child: Padding(
-                    padding: EdgeInsets.only(top: tween * 50),
-                    child: child,
-                  ),
-                );
-              },
-              child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 20),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 30),
-                child: const Text(
-                  'Create\n Account',
-                  style: TextStyle(color: Colors.white, fontSize: 33),
+        body: Stack(children: [
+          TweenAnimationBuilder(
+            duration: const Duration(milliseconds: 1050),
+            tween: Tween<double>(begin: 0, end: 1),
+            builder: (BuildContext context, tween, Widget? child) {
+              return Opacity(
+                opacity: tween,
+                child: Padding(
+                  padding: EdgeInsets.only(top: tween * 50),
+                  child: child,
                 ),
+              );
+            },
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 30),
+              child: const Text(
+                'Create\n Account',
+                style: TextStyle(color: Colors.white, fontSize: 33),
               ),
             ),
-            SingleChildScrollView(
+          ),
+          SingleChildScrollView(
               child: Container(
-                padding: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * 0.36),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                      margin: EdgeInsets.only(left: 35, right: 35),
-                      child: Column(
-                        children: [
+                  padding: EdgeInsets.only(
+                      top: MediaQuery.of(context).size.height * 0.36),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(left: 35, right: 35),
+                        child: Column(children: [
                           TextField(
+                            controller: _nameController,
                             style: TextStyle(color: Colors.white),
                             decoration: InputDecoration(
                                 enabledBorder: OutlineInputBorder(
@@ -76,6 +78,7 @@ class _MyRegisterState extends State<MyRegister> {
                             height: 30,
                           ),
                           TextField(
+                            controller: _emailController,
                             style: TextStyle(color: Colors.white),
                             decoration: InputDecoration(
                                 enabledBorder: OutlineInputBorder(
@@ -100,6 +103,7 @@ class _MyRegisterState extends State<MyRegister> {
                             height: 30,
                           ),
                           TextField(
+                            controller: _passwordController,
                             style: TextStyle(color: Colors.white),
                             obscureText: true,
                             decoration: InputDecoration(
@@ -149,7 +153,7 @@ class _MyRegisterState extends State<MyRegister> {
                           SizedBox(
                             height: 40,
                           ),
-                  Row(
+                          Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               TextButton(
@@ -168,12 +172,11 @@ class _MyRegisterState extends State<MyRegister> {
                               ),
                             ],
                           )
-                ]),
-              ),
-                  ],
-              ))
-            )]
-        ),
+                        ]),
+                      ),
+                    ],
+                  )))
+        ]),
       ),
     );
   }
