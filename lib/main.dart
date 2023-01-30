@@ -11,22 +11,26 @@ void main() {
     debugShowCheckedModeBanner: false,
     initialRoute: 'login',
     routes: {
-      'login' :(context) => MyLogin(),
-      'register':(context) => MyRegister(),
-      'splash':(context) => Splash(),
-      'chatbot':(context) => ChatbotScreen(),
-      'format':(context) => Format()
+      'login': (context) => MyLogin(),
+      'register': (context) => MyRegister(),
+      'splash': (context) => Splash(),
+      'chatbot': (context) => ChatbotScreen(),
+      'format': (context) => Format()
     },
     theme: ThemeData(
-      fontFamily: 'Quicksand',
-      textTheme: ThemeData.light().textTheme.copyWith(
-        headline6: const TextStyle(
-                fontFamily: 'OpenSans',
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-              ),
-      )
-    ),
+        fontFamily: 'Quicksand',
+        textTheme: ThemeData.light().textTheme.copyWith(
+            headline6: const TextStyle(
+              fontFamily: 'OpenSans',
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
+              color: Colors.white
+            ),
+            headline4: const TextStyle(
+              fontFamily: 'RobotoSlab',
+              fontWeight: FontWeight.normal,
+              fontSize: 18,
+              
+            ))),
   ));
 }
-

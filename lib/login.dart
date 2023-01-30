@@ -37,9 +37,9 @@ class _MyLoginState extends State<MyLogin> {
                 margin: const EdgeInsets.symmetric(horizontal: 20),
                 padding:
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 30),
-                child: const Text(
-                  'Welcome Back',
-                  style: TextStyle(color: Colors.white, fontSize: 33),
+                child: Text(
+                  'Welcome Back', 
+                  style: TextStyle(color: Colors.white, fontSize:28),
                 ),
               ),
             ),
