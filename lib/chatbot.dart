@@ -95,7 +95,6 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
   
 
   void tap(String num) {
-    print('event!');
     switch (num) {
       case "1":
         _sendmessage("Electricity Problem", 'user');

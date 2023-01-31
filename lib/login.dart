@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:http/http.dart';
 class MyLogin extends StatefulWidget {
   const MyLogin({super.key});
 
@@ -8,6 +8,24 @@ class MyLogin extends StatefulWidget {
 }
 
 class _MyLoginState extends State<MyLogin> {
+  void login(String email, String password) async {
+    try {
+      Response response =
+          await post(Uri.parse('https://reqres.in/api/Login'), body: {
+        'email': email,
+        'password': password,
+      });
+      if (response.statusCode == 200) {
+        var data = response.body.toString();
+        print(data);
+        print('account created!');
+      } else {
+        print('failed to register');
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+  }
   @override
   Widget build(BuildContext context) {
     TextEditingController _emailController = TextEditingController();

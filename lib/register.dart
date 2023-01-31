@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 
 class MyRegister extends StatefulWidget {
   const MyRegister({super.key});
@@ -143,7 +144,8 @@ class _MyRegisterState extends State<MyRegister> {
                                 backgroundColor: Color(0xff4c505b),
                                 child: IconButton(
                                     color: Colors.white,
-                                    onPressed: () {},
+                                    onPressed: () => _register(_nameController,
+                                        _emailController, _passwordController),
                                     icon: Icon(
                                       Icons.arrow_forward,
                                     )),
@@ -179,5 +181,16 @@ class _MyRegisterState extends State<MyRegister> {
         ]),
       ),
     );
+  }
+
+  _register(
+      TextEditingController nameController,
+      TextEditingController emailController,
+      TextEditingController passwordController) async {
+    Response response =
+        await post(Uri.parse('https://chatbothostel.onrender.com/signin'));
+    if (response.statusCode == 200) {
+      print("shiva prasad");
+    }
   }
 }
