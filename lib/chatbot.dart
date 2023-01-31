@@ -102,7 +102,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
             "You can contact or Email the main electrician of hostel\n\nElectrician: Amit Kumar \nRoom No.: G05 \nContact No.: 9890110989 \nWhatsapp No.:9890110989\nEmail: amitkumar@gmail.com.\n\n For getting the complain format. Click on format button \n\n",
             "ChatBot");
         _sendmessage2(ElevatedButton(
-        onPressed: (() => Navigator.of(context).pushNamed('format')),
+        onPressed: (() => Navigator.of(context).pushNamed('format',arguments: "Electricity")),
         child: Text("Format")), "ChatBot");
         break;
       //format()
@@ -113,7 +113,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
             "ChatBot");
             _sendmessage2(
             ElevatedButton(
-                onPressed: (() => Navigator.of(context).pushNamed('format')),
+                onPressed: (() => Navigator.of(context).pushNamed('format',arguments: "Water Problem")),
                 child: Text("Format")),
             "ChatBot");
         break;
@@ -125,7 +125,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
             "ChatBot");
             _sendmessage2(
             ElevatedButton(
-                onPressed: (() => Navigator.of(context).pushNamed('format')),
+                onPressed: (() => Navigator.of(context).pushNamed('format', arguments: "Food Problem")),
                 child: Text("Format")),
             "ChatBot");
         break;
@@ -136,7 +136,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
             "ChatBot");
             _sendmessage2(
             ElevatedButton(
-                onPressed: (() => Navigator.of(context).pushNamed('format')),
+                onPressed: (() => Navigator.of(context).pushNamed('format',arguments: "Furniture Breakdown")),
                 child: Text("Format")),
             "ChatBot");
         break;
@@ -147,7 +147,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
             "ChatBot");
             _sendmessage2(
             ElevatedButton(
-                onPressed: (() => Navigator.of(context).pushNamed('format')),
+                onPressed: (() => Navigator.of(context).pushNamed('format',arguments: "Ragging")),
                 child: Text("Format")),
             "ChatBot");
         break;
@@ -158,7 +158,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
             "ChatBot");
             _sendmessage2(
             ElevatedButton(
-                onPressed: (() => Navigator.of(context).pushNamed('format')),
+                onPressed: (() => Navigator.of(context).pushNamed('format', arguments: "Cleanliness")),
                 child: Text("Format")),
             "ChatBot");
         break;
@@ -175,7 +175,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
             "ChatBot");
             _sendmessage2(
             ElevatedButton(
-                onPressed: (() => Navigator.of(context).pushNamed('format')),
+                onPressed: (() => Navigator.of(context).pushNamed('format',arguments: "Complain")),
                 child: Text("Format")),
             "ChatBot");
         break;

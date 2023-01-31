@@ -188,7 +188,10 @@ class _MyRegisterState extends State<MyRegister> {
       TextEditingController emailController,
       TextEditingController passwordController) async {
     Response response =
-        await post(Uri.parse('https://chatbothostel.onrender.com/signin'));
+        await post(Uri.parse('https://chatbothostel.onrender.com/signin'),body: {
+          'email': emailController.text,
+          'name': nameController.text,
+        });
     if (response.statusCode == 200) {
       print("shiva prasad");
     }
