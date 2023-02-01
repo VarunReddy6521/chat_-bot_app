@@ -9,6 +9,8 @@ class ChatbotScreen extends StatefulWidget {
   State<ChatbotScreen> createState() => _ChatbotScreenState();
 }
 
+late String _problems;
+
 class _ChatbotScreenState extends State<ChatbotScreen> {
   @override
   @override
@@ -26,9 +28,9 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
     });
     _controller.clear();
   }
+
   void _sendmessage2(Widget txtt, String sender) {
-    ChatMessage _message =
-        ChatMessage(txtContainer: txtt, sender: sender);
+    ChatMessage _message = ChatMessage(txtContainer: txtt, sender: sender);
     setState(() {
       _messages.insert(0, _message);
     });
@@ -39,7 +41,8 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
     return Container(
       margin: EdgeInsets.all(5),
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8), color: Colors.blueGrey.shade100),
+          borderRadius: BorderRadius.circular(8),
+          color: Colors.blueGrey.shade100),
       child: Row(
         children: [
           Expanded(
@@ -91,9 +94,6 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
     );
   }
 
-  
-  
-
   void tap(String num) {
     switch (num) {
       case "1":
@@ -101,9 +101,12 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
         _sendmessage(
             "You can contact or Email the main electrician of hostel\n\nElectrician: Amit Kumar \nRoom No.: G05 \nContact No.: 9890110989 \nWhatsapp No.:9890110989\nEmail: amitkumar@gmail.com.\n\n For getting the complain format. Click on format button \n\n",
             "ChatBot");
-        _sendmessage2(ElevatedButton(
-        onPressed: (() => Navigator.of(context).pushNamed('format',arguments: "Electricity")),
-        child: Text("Format")), "ChatBot");
+        _sendmessage2(
+            ElevatedButton(
+                onPressed: (() => Navigator.of(context)
+                    .pushNamed('format', arguments: _problems = "Electricity")),
+                child: Text("Format")),
+            "ChatBot");
         break;
       //format()
       case "2":
@@ -111,9 +114,10 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
         _sendmessage(
             "You can contact or Email the Plumber of hostel\n\nPlumber: Shankar Sinha\nRoom No.: G10\nContact No.: 9890110981\n Whatsapp No.:9890110981\nEmail: sskumar@gmail.com. \n\nFor getting the complain format. Click on format button \n\n",
             "ChatBot");
-            _sendmessage2(
+        _sendmessage2(
             ElevatedButton(
-                onPressed: (() => Navigator.of(context).pushNamed('format',arguments: "Water Problem")),
+                onPressed: (() => Navigator.of(context).pushNamed('format',
+                    arguments: _problems = "Water Problem")),
                 child: Text("Format")),
             "ChatBot");
         break;
@@ -123,9 +127,10 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
         _sendmessage(
             "You can contact or Email the head chef of the mess\n\nHead Chef: Vijayshankar Chandrakar \nRoom No.: G011 \nContact No.: 9890110989 \nWhatsapp No.:9890110989\nEmail: vjiakumar@gmail.com. \n\nFor getting the complain format. Click on format button \n\n",
             "ChatBot");
-            _sendmessage2(
+        _sendmessage2(
             ElevatedButton(
-                onPressed: (() => Navigator.of(context).pushNamed('format', arguments: "Food Problem")),
+                onPressed: (() => Navigator.of(context).pushNamed('format',
+                    arguments: _problems = "Food Problem")),
                 child: Text("Format")),
             "ChatBot");
         break;
@@ -134,9 +139,10 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
         _sendmessage(
             "You can contact or Email Furniture maker\n\nName: Sharad Kumar \nRoom No.: G010 \nContact No.: 9890110989 \nWhatsapp No.:9890110989\nEmail: sdkumar@gmail.com. \n\nFor getting the complain format. Click on format button \n\n",
             "ChatBot");
-            _sendmessage2(
+        _sendmessage2(
             ElevatedButton(
-                onPressed: (() => Navigator.of(context).pushNamed('format',arguments: "Furniture Breakdown")),
+                onPressed: (() => Navigator.of(context).pushNamed('format',
+                    arguments: _problems = "Furniture Breakdown")),
                 child: Text("Format")),
             "ChatBot");
         break;
@@ -145,9 +151,10 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
         _sendmessage(
             "This is the highly serious issue complain to the below mentioned people\n\nChief Warden: Saurabh Kumar \nRoom No.: G12 \nContact No.: 9890110989 \nWhatsapp No.:9890110989\nEmail: skumar@gmail.com. \n\nRagging Punishment Committee Head: Sandip Sarker (Department of Humanities and Social Sciences)\nOffice room No.: S12 \nContact No.: 9890110989 \n Whatsapp No.:9890110989\nEmail: skumar@gmail.com. \n\nFor getting the complain format. Click on format button \n\n",
             "ChatBot");
-            _sendmessage2(
+        _sendmessage2(
             ElevatedButton(
-                onPressed: (() => Navigator.of(context).pushNamed('format',arguments: "Ragging")),
+                onPressed: (() => Navigator.of(context)
+                    .pushNamed('format', arguments: _problems = "Ragging")),
                 child: Text("Format")),
             "ChatBot");
         break;
@@ -156,9 +163,10 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
         _sendmessage(
             'You can contact sweeping team head\n\nHead Sweeper: Sudip \nRoom No.: G45 \nContact No.: 9890110989\nWhatsapp No.:9890110989\nEmail: sudip@gmail.com. \n\nFor getting the complain format. Click on format button \n\n',
             "ChatBot");
-            _sendmessage2(
+        _sendmessage2(
             ElevatedButton(
-                onPressed: (() => Navigator.of(context).pushNamed('format', arguments: "Cleanliness")),
+                onPressed: (() => Navigator.of(context)
+                    .pushNamed('format', arguments: _problems = "Cleanliness")),
                 child: Text("Format")),
             "ChatBot");
         break;
@@ -173,9 +181,10 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
         _sendmessage(
             "You can contact or Email the Chief Warden of hostel\n\nChief Warden: Saurabh Kumar \nRoom No.: G12 \n Contact No.: 9890110989 \nWhatsapp No.:9890110989\nEmail: skumar@gmail.com. \n\nFor getting the complain format. Click on format button \n\n",
             "ChatBot");
-            _sendmessage2(
+        _sendmessage2(
             ElevatedButton(
-                onPressed: (() => Navigator.of(context).pushNamed('format',arguments: "Complain")),
+                onPressed: (() => Navigator.of(context)
+                    .pushNamed('format', arguments: _problems = "Complain")),
                 child: Text("Format")),
             "ChatBot");
         break;
@@ -223,8 +232,15 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
               fit: BoxFit.fill)),
       child: Scaffold(
           backgroundColor: Colors.transparent,
-          appBar: AppBar(title:Text('HostelBot'),leading: Container(
-            margin:EdgeInsets.only(left:10),child: Image(image: AssetImage('assets/icon-removebg.png'), fit:BoxFit.fill,)),),
+          appBar: AppBar(
+            title: Text('HostelBot'),
+            leading: Container(
+                margin: EdgeInsets.only(left: 10),
+                child: Image(
+                  image: AssetImage('assets/icon-removebg.png'),
+                  fit: BoxFit.fill,
+                )),
+          ),
           body: SafeArea(
             child: Column(
               children: [

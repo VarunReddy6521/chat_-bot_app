@@ -37,8 +37,7 @@ class _SplashState extends State<Splash> {
   Widget content() {
     return Center(
       child: Container(
-        child: Lottie.network(
-            'https://assets1.lottiefiles.com/packages/lf20_fnitdsu4.json'),
+        child: Lottie.asset('./assets/95915-chat-bot-animation.json'),      
       ),
     );
   }

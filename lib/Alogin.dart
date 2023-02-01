@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
-class MyLogin extends StatefulWidget {
-  const MyLogin({super.key});
+
+class MyALogin extends StatefulWidget {
 
   @override
-  State<MyLogin> createState() => _MyLoginState();
+  State<MyALogin> createState() => _MyALoginState();
 }
 
-class _MyLoginState extends State<MyLogin> {
+class _MyALoginState extends State<MyALogin> {
   void login(String email, String password) async {
     try {
       Response response =
@@ -26,6 +26,7 @@ class _MyLoginState extends State<MyLogin> {
       print(e.toString());
     }
   }
+
   @override
   Widget build(BuildContext context) {
     TextEditingController _emailController = TextEditingController();
@@ -56,8 +57,8 @@ class _MyLoginState extends State<MyLogin> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 30),
                 child: Text(
-                  'Welcome Back', 
-                  style: TextStyle(color: Colors.white, fontSize:28),
+                  'Welcome Back',
+                  style: TextStyle(color: Colors.white, fontSize: 28),
                 ),
               ),
             ),
@@ -125,9 +126,7 @@ class _MyLoginState extends State<MyLogin> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       TextButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, 'register');
-                        },
+                        onPressed: () {},
                         child: const Text(
                           'Sign Up',
                           style: TextStyle(

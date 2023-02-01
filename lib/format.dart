@@ -7,9 +7,32 @@ class Format extends StatelessWidget {
   final TextEditingController _roomNoController = TextEditingController();
   final TextEditingController _phNoController = TextEditingController();
   final TextEditingController _RemarksController = TextEditingController();
-  void _submit() {}
+  var arg;
   @override
   Widget build(BuildContext context) {
+    arg = ModalRoute.of(context)?.settings.arguments;
+    _login(
+    TextEditingController nameController,
+    TextEditingController emailController,
+    TextEditingController phNoController,
+    TextEditingController roomNoController,
+    TextEditingController remarksController) async {
+  Response response = await post(
+      Uri.parse('https://chatbothostel.onrender.com/complain'),
+      body: {
+        'name': nameController.text,
+        'email': emailController.text,
+        'phone': phNoController.text,
+        'room': roomNoController.text,
+        'comment': remarksController.text,
+        'problem': arg.toString(),
+      });
+  if (response.statusCode == 200) {
+    print('rey epuraa');
+  }
+}
+
+    
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(
@@ -173,26 +196,6 @@ class Format extends StatelessWidget {
     );
   }
 }
-
-_login(
-    TextEditingController nameController,
-    TextEditingController emailController,
-    TextEditingController phNoController,
-    TextEditingController roomNoController,
-    TextEditingController remarksController) async {
-  Response response =
-      await post(Uri.parse('https://chatbothostel.onrender.com/complain'),body: {
-        'name': nameController.text,
-        'email': emailController.text,
-        'phone':  phNoController.text,
-        'room': roomNoController.text,
-        'comment': remarksController.text,
-      });
-  if (response.statusCode == 200) {
-    print('rey epuraa');
-  }
-}
-
 Widget _statement(int statusCode) {
   if (statusCode == 200) {
     return Container(

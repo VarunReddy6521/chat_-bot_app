@@ -1,17 +1,22 @@
+import 'package:chat_bot_app/Alogin.dart';
 import 'package:chat_bot_app/chatbot.dart';
-import 'package:chat_bot_app/login.dart';
+import 'package:chat_bot_app/initialLScreen.dart';
+
 import 'package:chat_bot_app/register.dart';
 import 'package:chat_bot_app/splash.dart';
 import 'package:flutter/material.dart';
 
-import 'format.dart';
+import './Slogin.dart';
+import './format.dart';
 
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    initialRoute: 'login',
+    initialRoute: 'Blogin',
     routes: {
-      'login': (context) => MyLogin(),
+      'Blogin':(context) => BtnScreen(),
+      'Slogin': (context) => MySLogin(),
+      'Alogin': (context) => MyALogin(),
       'register': (context) => MyRegister(),
       'splash': (context) => Splash(),
       'chatbot': (context) => ChatbotScreen(),
