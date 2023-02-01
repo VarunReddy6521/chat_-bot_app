@@ -14,6 +14,7 @@ class _MyRegisterState extends State<MyRegister> {
     TextEditingController _nameController = TextEditingController();
     TextEditingController _emailController = TextEditingController();
     TextEditingController _passwordController = TextEditingController();
+    TextEditingController _cnfmpasswordController = TextEditingController();
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
@@ -127,18 +128,37 @@ class _MyRegisterState extends State<MyRegister> {
                                 )),
                           ),
                           SizedBox(
+                            height: 30,
+                          ),
+                          TextField(
+                            controller: _cnfmpasswordController,
+                            style: TextStyle(color: Colors.white),
+                            obscureText: true,
+                            decoration: InputDecoration(
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: BorderSide(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide: BorderSide(
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                hintText: "Confirm Password",
+                                hintStyle: TextStyle(color: Colors.white),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                )),
+                          ),
+                          SizedBox(
                             height: 40,
                           ),
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              Text(
-                                'Sign Up',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 27,
-                                    fontWeight: FontWeight.w700),
-                              ),
                               CircleAvatar(
                                 radius: 30,
                                 backgroundColor: Color(0xff4c505b),
@@ -187,8 +207,9 @@ class _MyRegisterState extends State<MyRegister> {
       TextEditingController nameController,
       TextEditingController emailController,
       TextEditingController passwordController) async {
-    Response response =
-        await post(Uri.parse('https://chatbothostel.onrender.com/signin'),body: {
+    Response response = await post(
+        Uri.parse('https://chatbothostel.onrender.com/signin'),
+        body: {
           'email': emailController.text,
           'name': nameController.text,
         });

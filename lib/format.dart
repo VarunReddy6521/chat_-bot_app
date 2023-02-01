@@ -4,6 +4,7 @@ import 'package:http/http.dart';
 class Format extends StatelessWidget {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _branchController = TextEditingController();
   final TextEditingController _roomNoController = TextEditingController();
   final TextEditingController _phNoController = TextEditingController();
   final TextEditingController _RemarksController = TextEditingController();
@@ -16,7 +17,9 @@ class Format extends StatelessWidget {
     TextEditingController emailController,
     TextEditingController phNoController,
     TextEditingController roomNoController,
-    TextEditingController remarksController) async {
+    TextEditingController remarksController,
+    TextEditingController branchController,
+    ) async {
   Response response = await post(
       Uri.parse('https://chatbothostel.onrender.com/complain'),
       body: {
@@ -26,6 +29,7 @@ class Format extends StatelessWidget {
         'room': roomNoController.text,
         'comment': remarksController.text,
         'problem': arg.toString(),
+        'branch': branchController.text
       });
   if (response.statusCode == 200) {
     print('rey epuraa');
@@ -73,7 +77,7 @@ class Format extends StatelessWidget {
                               )),
                         ),
                         SizedBox(
-                          height: 30,
+                          height: 20,
                         ),
                         TextField(
                           controller: _emailController,
@@ -98,7 +102,7 @@ class Format extends StatelessWidget {
                               )),
                         ),
                         SizedBox(
-                          height: 30,
+                          height: 20,
                         ),
                         TextField(
                           controller: _roomNoController,
@@ -123,7 +127,32 @@ class Format extends StatelessWidget {
                               )),
                         ),
                         SizedBox(
-                          height: 30,
+                          height: 20,
+                        ),
+                        TextField(
+                          controller: _branchController,
+                          style: TextStyle(color: Colors.black),
+                          decoration: InputDecoration(
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: BorderSide(
+                                  color: Colors.white,
+                                ),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                                borderSide: BorderSide(
+                                  color: Colors.black,
+                                ),
+                              ),
+                              hintText: "Hostel Name",
+                              hintStyle: TextStyle(color: Colors.white),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              )),
+                        ),
+                        SizedBox(
+                          height: 20,
                         ),
                         TextField(
                           controller: _phNoController,
@@ -148,7 +177,7 @@ class Format extends StatelessWidget {
                               )),
                         ),
                         SizedBox(
-                          height: 30,
+                          height: 20,
                         ),
                         TextField(
                           controller: _RemarksController,
@@ -175,7 +204,7 @@ class Format extends StatelessWidget {
                               )),
                         ),
                         SizedBox(
-                          height: 30,
+                          height: 20,
                         ),
                         ElevatedButton(
                             onPressed: () => _login(
@@ -183,7 +212,8 @@ class Format extends StatelessWidget {
                                 _emailController,
                                 _phNoController,
                                 _roomNoController,
-                                _RemarksController),
+                                _RemarksController,
+                                _branchController),
                             child: Text(
                               'Submit',
                               style: TextStyle(fontSize: 20),
