@@ -2,35 +2,31 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 
 class MyALogin extends StatefulWidget {
-
   @override
   State<MyALogin> createState() => _MyALoginState();
 }
 
 class _MyALoginState extends State<MyALogin> {
-  void login(String email, String password) async {
-    try {
-      Response response =
-          await post(Uri.parse('https://reqres.in/api/Login'), body: {
-        'email': email,
-        'password': password,
-      });
-      if (response.statusCode == 200) {
-        var data = response.body.toString();
-        print(data);
-        print('account created!');
-      } else {
-        print('failed to register');
-      }
-    } catch (e) {
-      print(e.toString());
-    }
-  }
+
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController _emailController = TextEditingController();
-    TextEditingController _passwordController = TextEditingController();
+    TextEditingController _keyController = TextEditingController();
+      void login(String key) async {
+      try {
+        Response response =
+            await post(Uri.parse('https://chatbothostel.onrender.com/admin'), body: {
+          'key': key,
+        });
+        if (response.statusCode == 200) {
+          Navigator.pushReplacementNamed(context, 'tasks');
+        } else {
+          print('failed to register');
+        }
+      } catch (e) {
+        print(e.toString());
+      }
+    }
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
@@ -69,25 +65,16 @@ class _MyALoginState extends State<MyALogin> {
                     right: 35,
                     left: 35),
                 child: Column(children: [
-                  TextField(
-                    controller: _emailController,
-                    decoration: InputDecoration(
-                        fillColor: Colors.white,
-                        filled: true,
-                        hintText: 'Email',
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10))),
-                  ),
                   const SizedBox(
                     height: 30,
                   ),
                   TextField(
-                    controller: _passwordController,
+                    controller: _keyController,
                     obscureText: true,
                     decoration: InputDecoration(
                         fillColor: Colors.white,
                         filled: true,
-                        hintText: 'Password',
+                        hintText: 'ENTER THE KEY',
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10))),
                   ),
@@ -105,8 +92,7 @@ class _MyALoginState extends State<MyALogin> {
                             fontWeight: FontWeight.w700),
                       ),
                       GestureDetector(
-                        onTap: () =>
-                            Navigator.pushReplacementNamed(context, 'splash'),
+                        onTap: () => login(_keyController.text),
                         child: const CircleAvatar(
                           radius: 30,
                           backgroundColor: Color(0xff4c505b),
@@ -122,33 +108,6 @@ class _MyALoginState extends State<MyALogin> {
                   const SizedBox(
                     height: 40,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      TextButton(
-                        onPressed: () {},
-                        child: const Text(
-                          'Sign Up',
-                          style: TextStyle(
-                            decoration: TextDecoration.underline,
-                            fontSize: 18,
-                            color: Color(0xff4c505b),
-                          ),
-                        ),
-                      ),
-                      const TextButton(
-                        onPressed: null,
-                        child: Text(
-                          'Forgot Password',
-                          style: TextStyle(
-                            decoration: TextDecoration.underline,
-                            fontSize: 18,
-                            color: Color(0xff4c505b),
-                          ),
-                        ),
-                      )
-                    ],
-                  )
                 ]),
               ),
             ),

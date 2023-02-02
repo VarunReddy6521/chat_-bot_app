@@ -70,7 +70,7 @@ class _MyRegisterState extends State<MyRegister> {
                                     color: Colors.black,
                                   ),
                                 ),
-                                hintText: "Name",
+                                hintText: "Enrollment Id",
                                 hintStyle: TextStyle(color: Colors.white),
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(10),
@@ -180,7 +180,7 @@ class _MyRegisterState extends State<MyRegister> {
                             children: [
                               TextButton(
                                 onPressed: () {
-                                  Navigator.pushNamed(context, 'login');
+                                  Navigator.pushNamed(context, 'Slogin');
                                 },
                                 child: Text(
                                   'Sign In',
@@ -211,10 +211,12 @@ class _MyRegisterState extends State<MyRegister> {
         Uri.parse('https://chatbothostel.onrender.com/signin'),
         body: {
           'email': emailController.text,
-          'name': nameController.text,
+          'enrollmentnumber': nameController.text,
+          'password': passwordController.text,
         });
     if (response.statusCode == 200) {
-      print("shiva prasad");
+      print('shiva');
+      Navigator.pushNamed(context, 'Slogin');
     }
   }
 }

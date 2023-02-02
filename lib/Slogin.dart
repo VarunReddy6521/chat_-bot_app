@@ -1,34 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
-class MySLogin extends StatefulWidget {
 
+class MySLogin extends StatefulWidget {
   @override
   State<MySLogin> createState() => _MySLoginState();
 }
 
+var response;
+
 class _MySLoginState extends State<MySLogin> {
-  void login(String email, String password) async {
-    try {
-      Response response =
-          await post(Uri.parse('https://reqres.in/api/Login'), body: {
-        'email': email,
-        'password': password,
-      });
-      if (response.statusCode == 200) {
-        var data = response.body.toString();
-        print(data);
-        print('account created!');
-      } else {
-        print('failed to register');
-      }
-    } catch (e) {
-      print(e.toString());
-    }
-  }
   @override
   Widget build(BuildContext context) {
-    TextEditingController _emailController = TextEditingController();
+    TextEditingController _enrollmentidController = TextEditingController();
     TextEditingController _passwordController = TextEditingController();
+    void login(String enrollId, String password) async {
+      print(enrollId );
+      print(password);
+      try {
+        response = await post(Uri.parse('https://chatbothostel.onrender.com/login'), body: {
+          'enrollmentnumber': enrollId,
+          'password': password,
+        });
+        if (response.statusCode == 201) {
+          // ignore: use_build_context_synchronously
+          print('shiva');
+          Navigator.pushReplacementNamed(context, 'splash');
+        } else {
+          print('failed to register');
+        }
+      } catch (e) {
+        print(e.toString());
+      }
+    }
+
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
@@ -55,8 +59,8 @@ class _MySLoginState extends State<MySLogin> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 30),
                 child: Text(
-                  'Welcome Back', 
-                  style: TextStyle(color: Colors.white, fontSize:28),
+                  'Welcome Back',
+                  style: TextStyle(color: Colors.white, fontSize: 28),
                 ),
               ),
             ),
@@ -68,11 +72,11 @@ class _MySLoginState extends State<MySLogin> {
                     left: 35),
                 child: Column(children: [
                   TextField(
-                    controller: _emailController,
+                    controller: _enrollmentidController,
                     decoration: InputDecoration(
                         fillColor: Colors.white,
                         filled: true,
-                        hintText: 'Email',
+                        hintText: 'Enrollment id',
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10))),
                   ),
@@ -103,8 +107,8 @@ class _MySLoginState extends State<MySLogin> {
                             fontWeight: FontWeight.w700),
                       ),
                       GestureDetector(
-                        onTap: () =>
-                            Navigator.pushReplacementNamed(context, 'splash'),
+                        onTap: () => login(_enrollmentidController.text,
+                            _passwordController.text),
                         child: const CircleAvatar(
                           radius: 30,
                           backgroundColor: Color(0xff4c505b),

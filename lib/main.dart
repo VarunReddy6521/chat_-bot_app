@@ -4,6 +4,7 @@ import 'package:chat_bot_app/initialLScreen.dart';
 
 import 'package:chat_bot_app/register.dart';
 import 'package:chat_bot_app/splash.dart';
+import 'package:chat_bot_app/tasks.dart';
 import 'package:flutter/material.dart';
 
 import './Slogin.dart';
@@ -20,7 +21,8 @@ void main() {
       'register': (context) => MyRegister(),
       'splash': (context) => Splash(),
       'chatbot': (context) => ChatbotScreen(),
-      'format': (context) => Format()
+      'format': (context) => Format(),
+      'tasks':(context) => urlLaunch()
     },
     theme: ThemeData(
         fontFamily: 'Quicksand',
