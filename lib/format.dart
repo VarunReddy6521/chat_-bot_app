@@ -1,6 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 
+final List<String> _hostels = [
+  'Hostel-Mahanadi',
+  'Hostel-Indrawati',
+  'PG Hostel',
+  'Seonath',
+  'Hostel-Mainput',
+  'Hostel-Chitrakot',
+  'Hostel-Malhar',
+  'Hostel-Kotumsar'
+];
+var dr = _hostels.first;
+
 class Format extends StatelessWidget {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
@@ -9,34 +21,34 @@ class Format extends StatelessWidget {
   final TextEditingController _phNoController = TextEditingController();
   final TextEditingController _RemarksController = TextEditingController();
   var arg;
+
   @override
   Widget build(BuildContext context) {
     arg = ModalRoute.of(context)?.settings.arguments;
     _login(
-    TextEditingController nameController,
-    TextEditingController emailController,
-    TextEditingController phNoController,
-    TextEditingController roomNoController,
-    TextEditingController remarksController,
-    TextEditingController branchController,
+      TextEditingController nameController,
+      TextEditingController emailController,
+      TextEditingController phNoController,
+      TextEditingController roomNoController,
+      TextEditingController remarksController,
+      String HostelName,
     ) async {
-  Response response = await post(
-      Uri.parse('https://chatbothostel.onrender.com/complain'),
-      body: {
-        'name': nameController.text,
-        'email': emailController.text,
-        'phone': phNoController.text,
-        'room': roomNoController.text,
-        'comment': remarksController.text,
-        'problem': arg.toString(),
-        'branch': branchController.text
-      });
-  if (response.statusCode == 200) {
-    print('rey epuraa');
-  }
-}
+      Response response = await post(
+          Uri.parse('https://chatbothostel.onrender.com/complain'),
+          body: {
+            'name': nameController.text,
+            'email': emailController.text,
+            'phone': phNoController.text,
+            'room': roomNoController.text,
+            'comment': remarksController.text,
+            'problem': arg.toString(),
+            'branch': HostelName
+          });
+      if (response.statusCode == 200) {
+        print('rey epuraa');
+      }
+    }
 
-    
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(
@@ -129,28 +141,7 @@ class Format extends StatelessWidget {
                         SizedBox(
                           height: 20,
                         ),
-                        TextField(
-                          controller: _branchController,
-                          style: TextStyle(color: Colors.black),
-                          decoration: InputDecoration(
-                              enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: BorderSide(
-                                  color: Colors.white,
-                                ),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide: BorderSide(
-                                  color: Colors.black,
-                                ),
-                              ),
-                              hintText: "Hostel Name",
-                              hintStyle: TextStyle(color: Colors.white),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              )),
-                        ),
+                        
                         SizedBox(
                           height: 20,
                         ),
@@ -203,6 +194,10 @@ class Format extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(10),
                               )),
                         ),
+                        Container(
+                            padding: EdgeInsets.symmetric(
+                                vertical: 10, horizontal: 100),
+                            child: DropDownButtonExample()),
                         SizedBox(
                           height: 20,
                         ),
@@ -213,7 +208,7 @@ class Format extends StatelessWidget {
                                 _phNoController,
                                 _roomNoController,
                                 _RemarksController,
-                                _branchController),
+                                dr),
                             child: Text(
                               'Submit',
                               style: TextStyle(fontSize: 20),
@@ -226,6 +221,7 @@ class Format extends StatelessWidget {
     );
   }
 }
+
 Widget _statement(int statusCode) {
   if (statusCode == 200) {
     return Container(
@@ -235,4 +231,33 @@ Widget _statement(int statusCode) {
   return Container(
     child: Text('Failed to submit your complain'),
   );
+}
+
+class DropDownButtonExample extends StatefulWidget {
+  const DropDownButtonExample({super.key});
+
+  @override
+  State<DropDownButtonExample> createState() => _DropDownButtonExampleState();
+}
+
+class _DropDownButtonExampleState extends State<DropDownButtonExample> {
+  @override
+  Widget build(BuildContext context) {
+    return DropdownButton<String>(
+      value: dr,
+      icon: Icon(Icons.arrow_downward),
+      borderRadius: BorderRadius.circular(10),
+      items: _hostels.map<DropdownMenuItem<String>>((String value) {
+        return DropdownMenuItem<String>(
+          value: value,
+          child: Text(value),
+        );
+      }).toList(),
+      onChanged: (String? value) {
+        setState(() {
+          dr = value!;
+        });
+      },
+    );
+  }
 }

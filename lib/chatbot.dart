@@ -104,7 +104,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
             ElevatedButton(
                 onPressed: (() => Navigator.of(context)
                     .pushNamed('format', arguments: _problems = "Electricity")),
-                child: Text("Format")),
+                child: Text("Submit your complain")),
             "ChatBot");
         break;
       //format()
@@ -117,7 +117,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
             ElevatedButton(
                 onPressed: (() => Navigator.of(context).pushNamed('format',
                     arguments: _problems = "Water Problem")),
-                child: Text("Format")),
+                child: Text("Submit your complain")),
             "ChatBot");
         break;
         break;
@@ -130,7 +130,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
             ElevatedButton(
                 onPressed: (() => Navigator.of(context).pushNamed('format',
                     arguments: _problems = "Food Problem")),
-                child: Text("Format")),
+                child: Text("Submit your complain")),
             "ChatBot");
         break;
       case "4":
@@ -142,7 +142,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
             ElevatedButton(
                 onPressed: (() => Navigator.of(context).pushNamed('format',
                     arguments: _problems = "Furniture Breakdown")),
-                child: Text("Format")),
+                child: Text("Submit your complain")),
             "ChatBot");
         break;
       case "5":
@@ -154,7 +154,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
             ElevatedButton(
                 onPressed: (() => Navigator.of(context)
                     .pushNamed('format', arguments: _problems = "Ragging")),
-                child: Text("Format")),
+                child: Text("Submit your complain")),
             "ChatBot");
         break;
       case "6":
@@ -166,7 +166,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
             ElevatedButton(
                 onPressed: (() => Navigator.of(context)
                     .pushNamed('format', arguments: _problems = "Cleanliness")),
-                child: Text("Format")),
+                child: Text("Submit your complain")),
             "ChatBot");
         break;
       case "7":
@@ -184,7 +184,7 @@ class _ChatbotScreenState extends State<ChatbotScreen> {
             ElevatedButton(
                 onPressed: (() => Navigator.of(context)
                     .pushNamed('format', arguments: _problems = "Complain")),
-                child: Text("Format")),
+                child: Text("Submit your complain")),
             "ChatBot");
         break;
       case "9":
