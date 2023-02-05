@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 
 final List<String> _hostels = [
-  'Hostel-Mahanadi',
   'Hostel-Indrawati',
+  'Hostel-Mahanadi',
+  'Hostel-Sirpur',
   'PG Hostel',
   'Seonath',
   'Hostel-Mainput',
@@ -31,8 +32,9 @@ class Format extends StatelessWidget {
       TextEditingController phNoController,
       TextEditingController roomNoController,
       TextEditingController remarksController,
-      String HostelName,
+      String hostelName,
     ) async {
+      print(hostelName);
       Response response = await post(
           Uri.parse('https://chatbothostel.onrender.com/complain'),
           body: {
@@ -42,7 +44,7 @@ class Format extends StatelessWidget {
             'room': roomNoController.text,
             'comment': remarksController.text,
             'problem': arg.toString(),
-            'branch': HostelName
+            'hostel': hostelName
           });
       if (response.statusCode == 200) {
         print('rey epuraa');
@@ -141,7 +143,6 @@ class Format extends StatelessWidget {
                         SizedBox(
                           height: 20,
                         ),
-                        
                         SizedBox(
                           height: 20,
                         ),
@@ -196,7 +197,7 @@ class Format extends StatelessWidget {
                         ),
                         Container(
                             padding: EdgeInsets.symmetric(
-                                vertical: 10, horizontal: 100),
+                                vertical: 10, horizontal: 50),
                             child: DropDownButtonExample()),
                         SizedBox(
                           height: 20,
